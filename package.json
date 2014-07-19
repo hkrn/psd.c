@@ -1,0 +1,22 @@
+{
+  "name": "psd.c",
+  "version": "0.1.0",
+  "repo": "hkrn/psd.c",
+  "description": "psd.rb like embeddedable PSD parser",
+  "keywords": [ "psd", "photoshop" ],
+  "license": "MIT",
+  "src": [
+    "psd.c",
+    "psd.h",
+    "psd_p.h"
+  ],
+  "dependencies": {
+    "clibs/list": "0.0.7"
+  },
+  "development": {
+    "clibs/hash": "0.0.1",
+    "Constellation/console-colors.c": "1.0.1",
+    "stephenmathieson/describe.h": "1.1.0"
+  }
+}
+
