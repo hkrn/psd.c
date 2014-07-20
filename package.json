@@ -1,5 +1,5 @@
 {
-  "name": "psd.c",
+  "name": "psd",
   "version": "0.1.0",
   "repo": "hkrn/psd.c",
   "description": "psd.rb like embeddedable PSD parser",
