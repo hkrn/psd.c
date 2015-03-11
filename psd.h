@@ -93,13 +93,17 @@ typedef double psd_float64_t;
 #define PSD_NULL NULL
 #endif /* psd_null */
 
+#ifdef _MSC_VER
+
+#else
 PSD_STATIC_ASSERT(sizeof(psd_uint8_t)  == 1, "size of psd_uint8_t must be 1");
-PSD_STATIC_ASSERT(sizeof(psd_int16_t)  == 2, "size of psd_int16_t must be 2");
+PSD_STATIC_ASSERT(sizeof(psd_int16_t) == 2, "size of psd_int16_t must be 2");
 PSD_STATIC_ASSERT(sizeof(psd_uint16_t) == 2, "size of psd_uint16_t must be 2");
-PSD_STATIC_ASSERT(sizeof(psd_int32_t)  == 4, "size of psd_int32_t must be 4");
+PSD_STATIC_ASSERT(sizeof(psd_int32_t) == 4, "size of psd_int32_t must be 4");
 PSD_STATIC_ASSERT(sizeof(psd_uint32_t) == 4, "size of psd_uint32_t must be 4");
-PSD_STATIC_ASSERT(sizeof(psd_int64_t)  == 8, "size of psd_int64_t must be 8");
+PSD_STATIC_ASSERT(sizeof(psd_int64_t) == 8, "size of psd_int64_t must be 8");
 PSD_STATIC_ASSERT(sizeof(psd_uint64_t) == 8, "size of psd_uint64_t must be 8");
+#endif
 
 typedef struct psd_global_allocator_t psd_global_allocator_t;
 typedef struct psd_size_t psd_size_t;

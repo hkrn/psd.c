@@ -195,9 +195,10 @@ psdBufferReadBuffer(psd_buffer_t *buffer, psd_rsize_t length, psd_bool_t *ok)
     char *bytes;
     *ok = psdBufferCanReadLength(buffer, length);
     if (*ok) {
-        bytes = psd_malloc(length + 1);
+        bytes = psd_malloc(length + 2);
         if (psd_is_not_null(bytes)) {
-            bytes[length] = 0;
+            bytes[length+0] = 0;
+			bytes[length+1] = 0;
             memcpy(bytes, buffer->data + buffer->offset, length);
             buffer->offset += length;
         }
