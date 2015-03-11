@@ -143,7 +143,7 @@ struct psd_resource_slice_t {
     char *cell_text;
     int horizontal_alignment;
     int vertical_alignment;
-    uint32_t color;
+	psd_uint32_t color;
 };
 struct psd_resource_thumbnail_t {
     int format;
@@ -164,8 +164,8 @@ struct psd_resource_color_sampler_t {
         int ival;
         float fval;
     } vertical_position;
-    uint16_t color_space;
-    uint16_t depth;
+	psd_uint16_t color_space;
+	psd_uint16_t depth;
 };
 struct psd_resource_color_sampler_container_t {
     int version;
@@ -465,7 +465,7 @@ psdStringDestroy(char **string)
 }
 
 PSD_DECL_INLINE static void
-psdBufferDataDestroy(uint8_t **buffer)
+psdBufferDataDestroy(psd_uint8_t **buffer)
 {
     if (psd_is_not_null(*buffer)) {
         psd_free(*buffer);
@@ -1938,9 +1938,9 @@ psdLayerInfoParse(psd_layer_info_t *layer_info, psd_buffer_t *buffer)
         break;
     case PSD_LAYER_INFO_LOCKED:
         code = psdBufferReadInt32BigEndianUnsigned(buffer, &ok);
-        layer_info->u.locked.transparency = ((code & 0x1) != 0) || (code == -2147483648);
-        layer_info->u.locked.composite    = ((code & 0x2) != 0) || (code == -2147483648);
-        layer_info->u.locked.position     = ((code & 0x4) != 0) || (code == -2147483648);
+        layer_info->u.locked.transparency = ((code & 0x1) != 0) || (code == INT_MIN);
+        layer_info->u.locked.composite    = ((code & 0x2) != 0) || (code == INT_MIN);
+        layer_info->u.locked.position     = ((code & 0x4) != 0) || (code == INT_MIN);
         break;
     case PSD_LAYER_INFO_METADATA_SETTING:
         length = psdBufferReadLength(buffer, &ok);
