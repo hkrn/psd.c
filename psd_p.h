@@ -1791,7 +1791,14 @@ psdLayerParseBlendingRange(psd_layer_t *layer, psd_buffer_t *buffer)
     psd_rsize_t length;
     psd_bool_t ok;
     int num_channel_blending_range, i;
-    length = psdUtilMinUnsigned(psdBufferReadInt32BigEndian(buffer, &ok), 8);
+	length = psdBufferReadInt32BigEndian(buffer, &ok);
+	if (length == 0)
+	{
+		layer->num_channel_blending_ranges = 0;
+		return PSD_STATUS_SUCCESS;
+	}
+
+    length = psdUtilMinUnsigned(length, 8);
     psdLayerBlendingRangeParse(&layer->gray_blending_ranges, buffer, &ok);
     layer->num_channel_blending_ranges = num_channel_blending_range = (length - 8) / 8;
     if (num_channel_blending_range > 0) {
